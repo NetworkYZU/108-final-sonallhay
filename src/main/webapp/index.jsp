@@ -13,6 +13,7 @@
     </head>
     <body>
         <ul>
+            <li><a href="https://www.useloom.com/share/bc50cfaddcec4297a110b3201b85aa3f">video</a></li>
             <li><a href="showNotes.jsp">Show Notes</a></li>
             <li><a href="logout.jsp">LogOut</a></li>
         </ul>
