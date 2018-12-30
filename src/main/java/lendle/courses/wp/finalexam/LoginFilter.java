@@ -25,10 +25,6 @@ import javax.servlet.http.HttpSession;
 public class LoginFilter implements Filter {
     
     private static final boolean debug = true;
-
-    // The filter configuration object we are associated with.  If
-    // this value is null, this filter instance is not currently
-    // configured. 
     private FilterConfig filterConfig = null;
     
     public LoginFilter() {
@@ -40,26 +36,6 @@ public class LoginFilter implements Filter {
             log("LoginFilter:DoBeforeProcessing");
         }
 
-        // Write code here to process the request and/or response before
-        // the rest of the filter chain is invoked.
-        // For example, a logging filter might log items on the request object,
-        // such as the parameters.
-        /*
-	for (Enumeration en = request.getParameterNames(); en.hasMoreElements(); ) {
-	    String name = (String)en.nextElement();
-	    String values[] = request.getParameterValues(name);
-	    int n = values.length;
-	    StringBuffer buf = new StringBuffer();
-	    buf.append(name);
-	    buf.append("=");
-	    for(int i=0; i < n; i++) {
-	        buf.append(values[i]);
-	        if (i < n-1)
-	            buf.append(",");
-	    }
-	    log(buf.toString());
-	}
-         */
     }    
     
     private void doAfterProcessing(ServletRequest request, ServletResponse response)
@@ -68,23 +44,6 @@ public class LoginFilter implements Filter {
             log("LoginFilter:DoAfterProcessing");
         }
 
-        // Write code here to process the request and/or response after
-        // the rest of the filter chain is invoked.
-        // For example, a logging filter might log the attributes on the
-        // request object after the request has been processed. 
-        /*
-	for (Enumeration en = request.getAttributeNames(); en.hasMoreElements(); ) {
-	    String name = (String)en.nextElement();
-	    Object value = request.getAttribute(name);
-	    log("attribute: " + name + "=" + value.toString());
-
-	}
-         */
-        // For example, a filter might append something to the response.
-        /*
-	PrintWriter respOut = new PrintWriter(response.getWriter());
-	respOut.println("<P><B>This has been appended by an intrusive filter.</B>");
-         */
     }
 
     /**
@@ -110,11 +69,11 @@ public class LoginFilter implements Filter {
         try {
             HttpServletRequest httpRequest=(HttpServletRequest) request;
             HttpSession session=httpRequest.getSession();
-            if(session.getAttribute("id")!=null){
-                chain.doFilter(request, response);
-            }else{
-                httpRequest.getRequestDispatcher("/login.jsp").forward(request, response);
-            }
+            //完成 filter 的部分，當 session 中沒有 id 參數時，轉址到 /login.jsp
+            //否則正常執行 (30%)
+            
+            
+            ///////////////////////////////////////////////////////////////
         } catch (Throwable t) {
             // If an exception is thrown somewhere down the filter chain,
             // we still want to execute our after processing, and then

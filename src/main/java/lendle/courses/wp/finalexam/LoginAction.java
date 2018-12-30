@@ -32,12 +32,12 @@ public class LoginAction extends HttpServlet {
         String id=request.getParameter("id");
         String password=request.getParameter("password");
         HttpSession session=request.getSession();
-        if("admin".equals(id) && "admin".equals(password)){
-            session.setAttribute("id", id);
-            response.sendRedirect("showNotes.jsp");
-        }else{
-            response.sendRedirect("index.jsp");
-        }
+        //當帳號=admin，密碼=admin時，通過登入（記得記錄在session）
+        //並轉址到 showNotes.jsp
+        //否則轉址到 index.jsp
+        //請使用外轉址 (20%)
+        
+        ////////////////////////////////////////////////////
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

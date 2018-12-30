@@ -1,5 +1,6 @@
 <%@ page contentType="text/html" pageEncoding="utf-8"%>
 <%
-    session.invalidate();
-    response.sendRedirect("index.jsp");
+    //進行登出，並轉址到 index.jsp (20%)
+    
+    ///////////////////////////
 %>
