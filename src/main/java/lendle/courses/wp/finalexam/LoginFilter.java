@@ -70,8 +70,11 @@ public class LoginFilter implements Filter {
             HttpServletRequest httpRequest=(HttpServletRequest) request;
             HttpSession session=httpRequest.getSession();
             //完成 filter 的部分，當 session 中沒有 id 參數時，轉址到 /login.jsp
+            if(session.getAttribute("id") == null)
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+                
             //否則正常執行 (30%)
-            
+            chain.doFilter(request, response);
             
             ///////////////////////////////////////////////////////////////
         } catch (Throwable t) {

@@ -36,7 +36,14 @@ public class LoginAction extends HttpServlet {
         //並轉址到 showNotes.jsp
         //否則轉址到 index.jsp
         //請使用外轉址 (20%)
-        
+        //System.out.println(id + password);
+        session.setAttribute("id", id);
+        session.setAttribute("password", id);
+        if(id.equals("admin") && password.equals("admin")) {
+            request.getRequestDispatcher("showNotes.jsp").forward(request, response);
+        }else{
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        }
         ////////////////////////////////////////////////////
     }
 

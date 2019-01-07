@@ -31,15 +31,15 @@
                     <!--
                     將 notes 綁定到表格上，分別呈現 id, title, date (10%)
                     -->
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                    <tr  v-for="note in notes">
+                        <td>{{note.id}}</td>
+                        <td>{{note.title}}</td>
+                        <td>{{note.date}}</td>
                         <td>
                             <!--
                             將 click 綁到 vue 的 edit(note); (10%)
                             -->
-                            <button class="btn btn-primary">EDIT</button>
+                            <button class="btn btn-primary" v-on:click="edit(note);">EDIT</button>
                             <button class="btn btn-danger" v-on:click='deleteNote(note);'>DELETE</button>
                         </td>
                     </tr>
@@ -65,10 +65,10 @@
                         note.content
                         要用可編輯的方式 (10%)
                         -->
-                        ID: <input class="form-control" type='text'></input>
-                        Title: <input class="form-control" type='text'></input>
-                        Date: <input class="form-control" type='date'></input>
-                        Content: <textarea class="form-control" rows='3'></textarea>
+                        ID: <input class="form-control" type='text' v-model="note.header.id"></input>
+                        Title: <input class="form-control" type='text' v-model="note.header.title"></input>
+                        Date: <input class="form-control" type='date' v-model="note.header.date"></input>
+                        Content: <textarea class="form-control" rows='3' v-model="note.content"></textarea>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
